@@ -25,7 +25,7 @@ SECRET_KEY = 'svgd24=1^knuuozt^jmrkri52g64h)xtsm*y!c^(qmx*u&u95z'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'fitcycle.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+  'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prospect',
         'USER': 'db_app_user',
-        'PASSWORD': 'password',
-        'HOST': '172.30.4.59',   # Or an IP Address that your DB is hosted on
+        'PASSWORD': 'VMware123!',
+        'HOST': 'fitcyclecustomers.cy4b7ufzt54x.us-west-2.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
 
     }
 

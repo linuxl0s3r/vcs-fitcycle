@@ -1,3 +1,4 @@
+import logging
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
@@ -9,6 +10,7 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 #from django.views.decorators.csrf import csrf_protect
+stdlogger = logging.getLogger('django')
 
 def index(request):
     template = get_template("polls/index.html")
@@ -17,6 +19,8 @@ def index(request):
 #@csrf_protect
 def signup(request):
     template = get_template("polls/signup.html")
+
+    stdlogger.info("In signup page")
     
     if request.method == 'POST':
         form=PostForm(request.POST)
@@ -24,9 +28,16 @@ def signup(request):
             firstname=request.POST.get('firstname','')
             lastname=request.POST.get('lastname','')
             email=request.POST.get('email','')
+            stdlogger.info("creating object for saving to db")
             prospect_obj=prospect(firstname=firstname, lastname=lastname, email=email)
-            prospect_obj.save()
+            try:
+               stdlogger.info("About to save")
+               prospect_obj.save()
+            except Exception, e:
+               stdlogger.error("Error in saving: %s" % e)
+
             return HttpResponseRedirect(reverse('index'))
+
     else:
         form=PostForm()
     

@@ -1,4 +1,5 @@
 import logging
+from statsd.defaults.django import statsd
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
@@ -21,6 +22,9 @@ def signup(request):
     template = get_template("polls/signup.html")
 
     stdlogger.info("In signup page")
+
+    statsd.incr('fitcycle.signup',1)
+    foo_timer = statsd.timer('signupTimer')
     
     if request.method == 'POST':
         form=PostForm(request.POST)
@@ -32,7 +36,9 @@ def signup(request):
             prospect_obj=prospect(firstname=firstname, lastname=lastname, email=email)
             try:
                stdlogger.info("About to save")
+               foo_timer.start()
                prospect_obj.save()
+               foo_timer.stop()
             except Exception, e:
                stdlogger.error("Error in saving: %s" % e)
 

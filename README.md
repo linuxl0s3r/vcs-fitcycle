@@ -1,3 +1,12 @@
+### Credits
+
+This report was forked from https://github.com/bshetti/api_server.git. Bill Shetti is the original creator of Fitcycle. Modification have been made to the codebase and installation with input from Jacob Cherkas and myself.
+
+## Contributors
+Bill Shetti
+Jacob Cherkas
+Sean O'Dell
+
 # OS Requirements (Tested on Ubuntu 18.04)
 
 sudo apt-get update & sudo apt-get upgrade -y

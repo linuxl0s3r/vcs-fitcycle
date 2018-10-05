@@ -9,10 +9,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
-mysqlId=os.environ['MYSQL_ID']
-mysqlPassword=os.environ['MYSQL_PASSWORD']
-mysqlServer=os.environ['MYSQL_SERVER']
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -80,9 +76,9 @@ DATABASES = {
   'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'prospect',
-        'USER': mysqlId,
-        'PASSWORD': mysqlPassword,
-        'HOST': mysqlServer,   # Or an IP Address that your DB is hosted on
+        'USER': 'db_app_user', 
+        'PASSWORD': 'VMware1!',
+        'HOST': '10.0.0.8',   # Or an IP Address that your DB is hosted on
 
     }
 
@@ -129,22 +125,38 @@ STATIC_URL = '/static/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'console': {
+            # exact format is not important, this is the minimum information
+            'format': '%(asctime)s %(name)s %(levelname)s %(message)s',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/var/log/django-debug.log',
+            'formatter': 'console',
+            'filename': '/tmp/django-debug.log',
         },
-
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter':'console',
+        },
+        'sys-log':{
+            'class': 'logging.handlers.SysLogHandler',
+            'address': '/dev/log',
+            'formatter': 'console',
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['sys-log'],
             'level': 'DEBUG',
             'propagate': True,
         },
     },
 }
+
 
 STATSD_HOST = 'localhost'
 STATSD_PORT = 8125

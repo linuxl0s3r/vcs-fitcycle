@@ -17,18 +17,22 @@ pip install "django<2" mysqlclient statsd
 
 # Install fitcycle
 
-git clone https://github.com/theseanodell/vcs-fitcycle.git ~/fitcycle
+sudo git clone https://github.com/theseanodell/vcs-fitcycle.git ~/fitcycle
 
 # Run fitcycle
 
+cd fitcycle/
+
 modify/update ID, Password and Server in fitcycle/settings.py
 
+    MYSQL_ID='db_user'
 
-MYSQL_ID='db_user'
+    MYSQL_PASSWORD='abc123'
 
-MYSQL_PASSWORD='abc123'
+    MYSQL_SERVER='10.10.10.10'
 
-MYSQL_SERVER='10.10.10.10'
+Migrate Manage.py
 
+    python manage.py migrate
 
 to run  ./startfitcycle.sh

@@ -17,7 +17,7 @@ pip install "django<2" mysqlclient statsd
 
 # Install fitcycle
 
-sudo git clone https://github.com/theseanodell/vcs-fitcycle.git ~/fitcycle
+sudo git clone https://github.com/theseanodell/vcs-fitcycle.git fitcycle/
 
 # Run fitcycle
 

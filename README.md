@@ -9,11 +9,7 @@ Sean O'Dell
 
 # OS Requirements (Tested on Ubuntu 18.04)
 
-sudo apt-get update & sudo apt-get upgrade -y
-
-sudo apt-get install python python-pip libmysqlclient-dev -y
-
-pip install "django<2" mysqlclient statsd
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install python python-pip libmysqlclient-dev -y && pip install "django<2" mysqlclient statsd
 
 # Install fitcycle
 

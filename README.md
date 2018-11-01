@@ -9,17 +9,17 @@ Sean O'Dell
 
 # OS Requirements (Tested on Ubuntu 18.04)
 
-sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install python python-pip libmysqlclient-dev -y && pip install "django<2" mysqlclient statsd
+    sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get install python python-pip libmysqlclient-dev -y && pip install "django<2" mysqlclient statsd && sudo apt-get update && sudo apt-get upgrade -y
 
 # Install fitcycle
 
-sudo git clone https://github.com/theseanodell/vcs-fitcycle.git fitcycle/
+    sudo git clone https://github.com/theseanodell/vcs-fitcycle.git fitcycle/
 
 # Run fitcycle
 
-cd fitcycle/
+    cd fitcycle/
 
-modify/update ID, Password and Server in fitcycle/settings.py
+      modify/update ID, Password and Server in fitcycle/settings.py
 
     MYSQL_ID='db_user'
 
@@ -27,8 +27,8 @@ modify/update ID, Password and Server in fitcycle/settings.py
 
     MYSQL_SERVER='10.10.10.10'
 
-Migrate Manage.py
+# Migrate Manage.py (just in case)
 
     python manage.py migrate
 
-to run  ./startfitcycle.sh
+to run  sudo ./startfitcycle.sh
